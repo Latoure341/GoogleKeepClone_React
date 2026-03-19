@@ -1,9 +1,10 @@
 import './component_styles/form.css'
 
 function form() {
+
   return (
     <>
-      <div className="form-container inactive-form">
+      <div className="form-container inactive-form" >
         <form>
           <input type="text" className="note-text" placeholder="Take a note..." />
           <div className="form-actions">

@@ -19,9 +19,9 @@
     height: 100%;
     padding: 10px;
     margin-left: 10px;
-    width: 100%;
+    width: 95%;
     margin-right: 10px;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .note-title {
@@ -30,16 +30,16 @@
     height: 100%;
     padding: 10px;
     margin-left: 10px;
-    width: 100%;
+    width: 95%;
     margin-right: 10px;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-actions {
     display: flex;
 }
 .active-form {
-    display: none;
+    display: block;
 }
 .form {
     display: flex;
@@ -57,6 +57,7 @@
   justify-content: space-between;
   width: 100%;
   margin-top: 5px;
+  margin-right: 10px;
 }
 
 .close-btn {

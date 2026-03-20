@@ -39,7 +39,7 @@
     display: flex;
 }
 .active-form {
-    display: block;
+    display: none;
 }
 .form {
     display: flex;

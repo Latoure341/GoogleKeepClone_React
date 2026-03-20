@@ -1,6 +1,6 @@
 
 
-const Note = () => {
+const Note = (props) => {
 
     return (
         <>
@@ -12,8 +12,8 @@ const Note = () => {
           >
             check_circle
           </span>
-          <div className="title">Title</div>
-          <div className="text">Text</div>
+          <div className="title">{props.title}</div>
+          <div className="text">{props.text}</div>
           <div className="note-footer">
             <div className="tooltip">
               <span className="material-symbols-outlined hover small-icon">

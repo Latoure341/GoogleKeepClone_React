@@ -4,6 +4,7 @@ import "./component_styles/form.css";
 const Form = (props) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [visibleForm, setVisibleForm] = useState(true);
 
   const titleHandleOnChange = (event) => setTitle(event.target.value);
   const textHandleOnChange = (event) => setText(event.target.value);
@@ -41,9 +42,19 @@ const Form = (props) => {
     props.addNote(note);
   };
 
+  const handlerClickFrom = ()=>{
+    if(visibleForm) {
+      document.querySelector(".inactive-form").style.display = "none";
+      document.querySelector(".active-form").style.display = "block";
+      document.querySelector(".note-title").focus();
+      setVisibleForm(false);
+    }
+  
+  }
+
   return (
     <>
-      {/* <div className="form-container inactive-form" >
+      <div className="form-container inactive-form" onClick={handlerClickFrom} >
         <form>
           <input type="text" className="note-text" placeholder="Take a note..." />
           <div className="form-actions">
@@ -61,7 +72,7 @@ const Form = (props) => {
             </div>
           </div>
         </form>
-      </div>  */}
+      </div> 
 
       <div className="form-container active-form">
         <form onSubmit={handleSubmit} className="form" id="form">

@@ -4,16 +4,27 @@ import Form from "./components/form";
 import Notes from "./components/notes"
 import Modal from "./components/modal"
 function App() {
-  const note = [
-    {id:1, title: "My title", text: "My Text"}, {id: 2, title: "Second Title", text: "Second Text"}
-  ]
+  //Array of notes
+  let notes = [{
+    id: "",
+    title: "My title",
+    text: "My Text"
+  }]
+
+  //Adding a note
+  const addNote =  (note) => {
+    notes.push(note);
+    console.log(notes);
+  }
+ 
 
   return (
     <>
       <NavBar />
       <SideBar />
-      <Form />
-      <Notes noting={note}/>
+      // eslint-disable-next-line react-hooks/immutability, react-hooks/immutability
+      <Form addNote = {addNote}/>
+      <Notes />
       <Modal />
     </>
   )

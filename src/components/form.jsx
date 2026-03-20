@@ -1,10 +1,49 @@
-import './component_styles/form.css'
+import React, { useState } from "react";
+import "./component_styles/form.css";
 
-function form() {
+const Form = (props) => {
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+
+  const titleHandleOnChange = (event) => setTitle(event.target.value);
+  const textHandleOnChange = (event) => setText(event.target.value);
+
+  // const [userInput, setInput] = useState({
+  //   title: "",
+  //   text: ""
+  // })
+  // const titleHandleOnChange = (event) => setInput((prevState)=>{
+  //   return {
+  //     ...prevState, title: event.target.value
+  //   }
+  // })
+  // const textHandleOnChange = (event) => setInput((prevState)=>{
+  //   return {
+  //     ...prevState, text: event.target.value
+  //   }
+  // })
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // setInput({
+    //   title: "",
+    //   text: ""
+    // })
+    setTitle("");
+    setText("");
+
+    //Create a note
+    const note = {
+      id: "",
+      title,
+      text,
+    };
+    props.addNote(note);
+  };
 
   return (
     <>
-      <div className="form-container inactive-form" >
+      {/* <div className="form-container inactive-form" >
         <form>
           <input type="text" className="note-text" placeholder="Take a note..." />
           <div className="form-actions">
@@ -22,12 +61,20 @@ function form() {
             </div>
           </div>
         </form>
-      </div>
+      </div>  */}
 
       <div className="form-container active-form">
-        <form className="form" id="form">
-          <input type="text" className="note-title" placeholder="Title" />
+        <form onSubmit={handleSubmit} className="form" id="form">
           <input
+            onChange={titleHandleOnChange}
+            value={title}
+            type="text"
+            className="note-title"
+            placeholder="Title"
+          />
+          <input
+            onChange={textHandleOnChange}
+            value={text}
             type="text"
             className="note-text"
             id="note-text"
@@ -90,6 +137,6 @@ function form() {
       </div>
     </>
   );
-}
+};
 
-export default form;
+export default Form;

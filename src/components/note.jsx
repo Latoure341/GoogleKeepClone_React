@@ -1,20 +1,47 @@
-
+import React, { useState } from "react";
 
 const Note = (props) => {
+  const { id, deleteNote, toggleModal } = props
+  const [title, setTitle] = useState(props.title);
+  const [text, setText] = useState(props.text);
+  const [isHover, setHover] = useState(false);
 
-    return (
-        <>
-            <div className="notes">
-        <div className="note" id="note">
-          <span
-            className="material-symbols-outlined check-circle"
-            id="check-circle"
-          >
-            check_circle
-          </span>
-          <div className="title">{props.title}</div>
-          <div className="text">{props.text}</div>
-          <div className="note-footer">
+  //Functions
+  const handleNoteClick = ()=>{
+    toggleModal();
+  }
+  const handlerMouserOver = () => {
+    setHover(true);
+  };
+  const handleMouseOut = () => {
+    setHover(false);
+  };
+  const handleArchive = ()=>{
+    deleteNote(id)
+  }
+
+  return (
+    <>
+      <div className="notes">
+        <div
+          className="note"
+          id={id}
+          onMouseOver={handlerMouserOver}
+          onMouseOut={handleMouseOut}
+          onClick={handleNoteClick}
+        >
+          {isHover && (
+            <span
+              className="material-symbols-outlined check-circle"
+              id="check-circle"
+            >
+              {" "}
+              check_circle
+            </span>
+          )}
+          <div className="title">{title}</div>
+          <div className="text">{text}</div>
+          <div className="note-footer" style={{visibility: isHover ? "visible" : "hidden"}}>
             <div className="tooltip">
               <span className="material-symbols-outlined hover small-icon">
                 add_alert
@@ -40,10 +67,10 @@ const Note = (props) => {
               <span className="tooltip-text">Add Image</span>
             </div>
             <div className="tooltip">
-              <span className="material-symbols-outlined hover small-icon archive">
+              <span className="material-symbols-outlined hover small-icon archive" onClick={handleArchive}>
                 archive
               </span>
-              <span className="tooltip-text archive">Archive</span>
+              <span className="tooltip-text archive" >Archive</span>
             </div>
             <div className="tooltip">
               <span className="material-symbols-outlined hover small-icon">
@@ -54,9 +81,9 @@ const Note = (props) => {
           </div>
         </div>
         <span className="tooltip-text">Add Image</span>
-    </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
 
 export default Note;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import NavBar from "./components/navbar";
 import SideBar from "./components/sidebar";
 import Form from "./components/form";
@@ -6,21 +7,12 @@ import Notes from "./components/notes"
 import Modal from "./components/modal"
 
 //Array of notes
-   const NOTES = [//{
-  //   id: "",
-  //   title: "My title",
-  //   text: "My Text"
-  // },
-  // {
-  //   id: "",
-  //   title: "My title2",
-  //   text: "My Text2"
-  // }
-]
+   const NOTES = []
 
 function App() {
 
-  const [notes, setNotes] = useState(NOTES)
+  let [notes, setNotes] = useState(NOTES)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   
 
   //Adding a note
@@ -31,16 +23,29 @@ function App() {
       ]
     })
   }
- 
+
+  //Delete a note
+  const deleteNote = (id) => {
+        setNotes((prevState)=>{
+          return prevState.filter(note => note.id != id)
+        })
+    }
+
+  //open/close the modal
+  const toggleModal = () => {
+    setIsModalOpen((prevState)=>{
+      return (prevState ? prevState = false : prevState = true)
+    })
+  }  
 
   return (
     <>
       <NavBar />
       <SideBar />
      
-      <Form addNote = {addNote}/>
-      <Notes notes = {notes} />
-      <Modal />
+      <Form addNote={addNote} />
+      <Notes notes={notes} deleteNote={deleteNote} toggleModal={toggleModal}/>
+      <Modal isModalOpen={isModalOpen}/>
     </>
   )
 }

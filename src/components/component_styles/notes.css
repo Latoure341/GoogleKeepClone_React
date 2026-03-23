@@ -29,7 +29,6 @@ flex-wrap: wrap;
   display: flex;
   padding: 0;
   justify-content: center;
-  visibility: hidden;
 }
 
 .note-footer .material-symbols-outlined {
@@ -41,5 +40,4 @@ flex-wrap: wrap;
   position: absolute;
   top: -20px;
   left: -20px;
-  visibility: hidden;
 }

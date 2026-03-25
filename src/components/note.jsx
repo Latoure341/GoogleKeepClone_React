@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 const Note = (props) => {
-  const { id, deleteNote, toggleModal } = props
-  const [title, setTitle] = useState(props.title);
-  const [text, setText] = useState(props.text);
+  const { note, deleteNote, toggleModal, setSelectedNote } = props
   const [isHover, setHover] = useState(false);
 
   //Functions
-  const handleNoteClick = ()=>{
+  const handleNoteClick = (event)=>{
+    event.preventDefault();
     toggleModal();
+    setSelectedNote(note);
   }
   const handlerMouserOver = () => {
     setHover(true);
@@ -17,7 +17,7 @@ const Note = (props) => {
     setHover(false);
   };
   const handleArchive = ()=>{
-    deleteNote(id)
+    deleteNote(note.id)
   }
 
   return (
@@ -25,7 +25,7 @@ const Note = (props) => {
       <div className="notes">
         <div
           className="note"
-          id={id}
+          id={note.id}
           onMouseOver={handlerMouserOver}
           onMouseOut={handleMouseOut}
           onClick={handleNoteClick}
@@ -39,8 +39,8 @@ const Note = (props) => {
               check_circle
             </span>
           )}
-          <div className="title">{title}</div>
-          <div className="text">{text}</div>
+          <div className="title">{note.title}</div>
+          <div className="text">{note.text}</div>
           <div className="note-footer" style={{visibility: isHover ? "visible" : "hidden"}}>
             <div className="tooltip">
               <span className="material-symbols-outlined hover small-icon">

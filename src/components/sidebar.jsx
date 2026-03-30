@@ -1,10 +1,24 @@
+import React, { useState } from 'react';
 import './component_styles/sidebar.css'
 
 function sidebar() {
+  const [miniSidebar, setMiniSidebar] = useState(true);
+
+  const handleMouseOut = () => {
+    setMiniSidebar(true);
+    document.querySelector('.sidebar').classList.remove('sidebar-shadow');
+  
+  }
+  const handleMouserOver = () => {
+    setMiniSidebar(false);
+    document.querySelector('.sidebar').classList.add('sidebar-shadow');
+  }
+
   return (
     <>
-      <div className="sidebar">
-        <div className="sidebar-item active-bar">
+      <div className="sidebar" onMouseOver={handleMouserOver} onMouseOut={handleMouseOut}
+      style={miniSidebar ? { width: '70px' } : { width: '250px' }}>
+        <div className={miniSidebar ? "sidebar-item active-bar" : 'sidebar-item active-bar sidebar-active-item'}>
           <span className="material-symbols-outlined hover active">lightbulb</span>
           <span className="sidebar-text">Notes</span>
         </div>

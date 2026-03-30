@@ -6,9 +6,15 @@ const Note = (props) => {
 
   //Functions
   const handleNoteClick = (event)=>{
+    const spanTarget = event.target.closest("span");
     event.preventDefault();
-    toggleModal();
-    setSelectedNote(note);
+    if(spanTarget && spanTarget.classList.contains("archive")){
+      return
+    }else {
+      toggleModal();
+      setSelectedNote(note);
+    }
+    
   }
   const handlerMouserOver = () => {
     setHover(true);

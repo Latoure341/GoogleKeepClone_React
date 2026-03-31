@@ -1,3 +1,15 @@
+:root {
+
+    --icon-color: rgb(200,200,200);
+    --text-color: #5f6368;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --icon-color: rgb(60,60,60);
+        --text-color: rgb(150,151,153);
+    }
+}
+
 
 .empty-list-container {
     display: flex;
@@ -9,10 +21,10 @@
     margin-top: 4rem;
 }
 .empty-list-icon {
-    color: rgb(200,200,200);
+    color: var(--icon-color);
     font-size: 9rem;
 }
 .empty-list-container p {
-    color: rgb(150,150,150);
+    color: var(--text-color);
     font-size: x-large;
 }

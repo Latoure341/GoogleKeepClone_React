@@ -1,12 +1,11 @@
 :root {
   --bg-color: #fff;
-  
-  --text-color: 5f6368;
+  --text-color: #5f6368;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: rgb(40,42,44);
-    --text-color: rgb(110,111,113);
+    --text-color: rgb(150,151,153);
   }
 }
 
@@ -52,4 +51,9 @@ input:focus {
 
 .search-area span {
   margin-left: 10px;
+}
+
+.hover:hover {
+  background-color: rgb(60,62,64);
+  color: var(--text-color);
 }

@@ -1,6 +1,9 @@
+import React, {useState} from 'react';
 import './component_styles/navbar.css'
 
 function navbar() {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
     <>
   
@@ -19,12 +22,15 @@ function navbar() {
           />
           <span className="logo-text">Keep</span>
         </div>
-        <div className="search-area">
-          <div className="tooltip">
-            <span className="material-symbols-outlined hover">search</span>
+        <div className="search-area" style={{ backgroundColor: isFocused ? 'white' : 'rgb(40,42,44)' }}>
+          <div className="tooltip" >
+            <span className="material-symbols-outlined hover" style={{color: isFocused && 'grey'}}>search</span>
             <span className="tooltip-text">Search</span>
           </div>
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Search" 
+          onFocus={() => {setIsFocused(true)}} 
+          style={{ backgroundColor: isFocused ? 'white' : 'transparent', color: isFocused && 'black' }} 
+          onBlur={() => setIsFocused(false)}/>
         </div>
         <div className="settings-area">
           <div className="tooltip">

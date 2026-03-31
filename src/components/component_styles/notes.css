@@ -1,3 +1,13 @@
+:root {
+    --bg-color: #fff;
+    --text-color: rgb(30,31,33);
+}
+@media (prefers-color-scheme: dark){
+    :root {
+        --bg-color: rgb(32,33,36);
+        --text-color: rgb(220,221,223);
+    }
+}
 
 .notes {
 display: flex;
@@ -6,20 +16,22 @@ flex-wrap: wrap;
 }
 
 .note {
-  background-color: white;
+  background-color: var(--bg-color);
   margin: 10px;
   width: 280px;
-  border: 1px solid #e0e1e0;
+  border: 0.7px solid #929292;
   border-radius: 8px;
   position: relative;
 }
 
 .note .title {
+  color: var(--text-color);
   width: 100%;
   margin: 15px 0 0 15px ;
 }
 
 .note .text {
+  color: var(--text-color);
   width: 100%;
   margin: 10px 0 0 15px;
 }
@@ -37,6 +49,7 @@ flex-wrap: wrap;
 }
 
 .note .check-circle {
+  color: var(--text-color);
   position: absolute;
   top: -20px;
   left: -20px;

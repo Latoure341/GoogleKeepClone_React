@@ -13,6 +13,7 @@ function App() {
   let [notes, setNotes] = useState(NOTES);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
+  const [isMiniSidebar, setIsMiniSidebar] = useState(true);
 
   //Adding a note
   const addNote = (note) => {
@@ -51,8 +52,8 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <SideBar />
+      <NavBar setIsMiniSidebar={setIsMiniSidebar} />
+      <SideBar isMiniSidebar={isMiniSidebar} />
       <Form addNote={addNote} />
       <Notes
         notes={notes}

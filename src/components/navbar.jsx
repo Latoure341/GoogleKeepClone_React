@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './component_styles/navbar.css'
 
-function navbar() {
+const navbar = (props) => {
+  const { setIsMiniSidebar } = props;
   const [isFocused, setIsFocused] = useState(false);
+
+  const handleClick = () => {
+    setIsMiniSidebar((prevState) => {
+      return !prevState;
+    });
+  }
 
   return (
     <>
-  
       <nav>
         <div className="logo-area">
-          <div className="tooltip">
+
+          <div className="tooltip" onClick={handleClick}>
             <span className="material-symbols-outlined hover">menu</span>
             <span className="tooltip-text">Main Menu</span>
           </div>

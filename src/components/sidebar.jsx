@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './component_styles/sidebar.css'
 
-function sidebar() {
+function sidebar(props) {
   const [miniSidebar, setMiniSidebar] = useState(true);
+  const { isMiniSidebar } = props;
 
   const handleMouseOut = () => {
     setMiniSidebar(true);
@@ -13,11 +14,11 @@ function sidebar() {
     setMiniSidebar(false);
     document.querySelector('.sidebar').classList.add('sidebar-shadow');
   }
-
+  
   return (
     <>
       <div className="sidebar" onMouseOver={handleMouserOver} onMouseOut={handleMouseOut}
-      style={miniSidebar ? { width: '70px' } : { width: '250px' }}>
+      style={(miniSidebar && isMiniSidebar) ? { width: '70px' } : { width: '250px' }} >
         <div className={miniSidebar ? "sidebar-item active-bar" : 'sidebar-item active-bar sidebar-active-item'}>
           <span className="material-symbols-outlined active">lightbulb</span>
           <span className="sidebar-text">Notes</span>

@@ -7,7 +7,7 @@ function modal(props) {
   const { isModalOpen, selectedNote, toggleModal, editNote} = props
   
   const handleClick = ()=>{
-    !hasCursor && toggleModal()
+    !hasCursor && toggleModal();
   }
   const mouseOverHandle = ()=>setCursor(true);
   const mouseOutHandle = ()=>setCursor(false);

@@ -17,8 +17,8 @@ flex-wrap: wrap;
 
 .note {
   background-color: var(--bg-color);
-  margin: 10px;
-  width: 280px;
+  margin: 0.625rem;
+  width: 17.5rem;
   border: 0.7px solid #929292;
   border-radius: 8px;
   position: relative;
@@ -27,17 +27,17 @@ flex-wrap: wrap;
 .note .title {
   color: var(--text-color);
   width: 100%;
-  margin: 15px 0 0 15px ;
+  margin: 0.9375rem 0 0 0.9375rem ;
 }
 
 .note .text {
   color: var(--text-color);
   width: 100%;
-  margin: 10px 0 0 15px;
+  margin: 0.625rem 0 0 0.9375rem;
 }
 
 .note .note-footer {
-  margin-top: 15px;
+  margin-top: 0.9375rem;
   display: flex;
   padding: 0;
   justify-content: center;
@@ -51,6 +51,6 @@ flex-wrap: wrap;
 .note .check-circle {
   color: var(--text-color);
   position: absolute;
-  top: -20px;
-  left: -20px;
+  top: -1.25rem;
+  left: -1.25rem;
 }

@@ -15,13 +15,13 @@
 
 .sidebar {
     position: fixed;
-    left: 0;
-    top: 95px;
+    left: -0.7rem;
+    top: 4rem;
     display: flex;
     flex-direction: column;
-    margin-top: 5px;
+    margin-top: 0.3125rem;
     color: #5f6368;
-    width: 65px;
+    width: 4.0625rem;
     transition: "0.8s";
     height: 100%;
     overflow-x: hidden;
@@ -41,7 +41,7 @@
 }
 
 .sidebar .sidebar-item {
-    padding: 3px;
+    padding: 0.1875rem;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -51,16 +51,16 @@
 .sidebar-item .sidebar-text {
     color: var(--text-color);
     font-size: 0.9rem;
-    margin-left: 20px;
-    width: 250px;
+    margin-left: 1.25rem;
+    width: 15.625rem;
 }
 
 .sidebar-item .material-symbols-outlined {
-  margin-left: 18px;
+  margin-left: 1.125rem;
 }
 
 .sidebar-item:nth-child(1) {
-    margin-top: 5px;
+    margin-top: 0.3125rem;
 }
 
 .sidebar-item:hover {

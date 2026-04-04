@@ -4,6 +4,7 @@ import './component_styles/navbar.css'
 const navbar = (props) => {
   const { setIsMiniSidebar } = props;
   const [isFocused, setIsFocused] = useState(false);
+  const [isMobileSearch, setIsMobileSearch] = useState(false);
 
   const handleClick = () => {
     setIsMiniSidebar((prevState) => {
@@ -39,7 +40,19 @@ const navbar = (props) => {
           style={{ backgroundColor: isFocused ? 'white' : 'transparent', color: isFocused && 'black' }} 
           onBlur={() => setIsFocused(false)}/>
         </div>
-        <div className="settings-area">
+        <div className="profile-actions-area">
+          {
+            (window.innerWidth < 480) && (
+                isMobileSearch ? (
+                <div><input type='text' placeholder='Search' className='mobile-search-input' /></div>
+              ) : (
+                <div className="tooltip">
+                  <span className="material-symbols-outlined hover">search</span>
+                  <span className="tooltip-text">Search</span>
+                </div> 
+              )
+            ) 
+          }
           <div className="tooltip">
             <span className="material-symbols-outlined hover">refresh</span>
             <span className="tooltip-text">Refresh</span>
@@ -52,8 +65,6 @@ const navbar = (props) => {
             <span className="material-symbols-outlined hover">settings</span>
             <span className="tooltip-text">Settings</span>
           </div>
-        </div>
-        <div className="profile-actions-area">
           <div className="tooltip">
             <span className="material-symbols-outlined hover">apps</span>
             <span className="tooltip-text">Apps</span>

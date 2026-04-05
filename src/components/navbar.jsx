@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './component_styles/navbar.css'
 
 const navbar = (props) => {
   const { setIsMiniSidebar } = props;
   const [isFocused, setIsFocused] = useState(false);
-  const [isMobileSearch, setIsMobileSearch] = useState(false);
+  const [inputSearch, setInputSearch] = useState(false);
 
   const handleClick = () => {
     setIsMiniSidebar((prevState) => {
       return !prevState;
     });
   }
-
+  const handleSearch = () => {
+    console.log('Search Clicked');
+    setInputSearch((prevState) => {
+      return !prevState;
+    });
+  }
+  
   return (
     <>
       <nav>
@@ -41,18 +47,20 @@ const navbar = (props) => {
           onBlur={() => setIsFocused(false)}/>
         </div>
         <div className="profile-actions-area">
+
           {
-            (window.innerWidth < 480) && (
-                isMobileSearch ? (
-                <div><input type='text' placeholder='Search' className='mobile-search-input' /></div>
-              ) : (
-                <div className="tooltip">
-                  <span className="material-symbols-outlined hover">search</span>
-                  <span className="tooltip-text">Search</span>
-                </div> 
-              )
-            ) 
+            inputSearch ? (
+              <div className="tooltip mobileInput" >
+                <span className="material-symbols-outlined hover" onClick={handleSearch}>arrow_back</span>
+                <input type="text" placeholder="Search"/>
+              </div>
+            ) : (
+              <div className="tooltip mobileSearch" onClick={handleSearch}>
+                <span className="material-symbols-outlined hover">search</span>
+              </div>
+            )
           }
+
           <div className="tooltip">
             <span className="material-symbols-outlined hover">refresh</span>
             <span className="tooltip-text">Refresh</span>

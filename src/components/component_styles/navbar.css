@@ -1,11 +1,13 @@
 :root {
   --bg-color: #fff;
   --text-color: #5f6368;
+  --mobile-bg-color: rgb(40,42,44);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: rgb(40,42,44);
     --text-color: rgb(150,151,153);
+    --mobile-bg-color: white;
   }
 }
 
@@ -58,8 +60,78 @@ input:focus {
   color: var(--text-color);
 }
 
-@media (max-width: 480px) {
-  .search-area {
+/* Mobile View Styles */
+.mobileSearch {
+  display: none;
+}
+@media (max-width: 599px) {
+  .search-area, .tooltip-text, .profile-actions-area div:nth-child(3) {
     display: none;
   }
+  .profile-actions-area {
+    display: flex;
+    align-items: center;
+  }
+  .mobileSearch {
+    display: block;
+    width: 2.5rem;
+  }
+  .mobileInput {
+    position: absolute;
+    left: 0.2rem;
+    z-index: 1000;
+    width: 60%;
+
+    display: flex;
+    align-items: center;
+    background: var(--mobile-bg-color);
+    border-radius: 5px;
+  }
+  .mobileInput .material-symbols-outlined {
+    background-color: var(--mobile-bg-color);
+  }
+  .mobileInput input {
+    background-color: var(--mobile-bg-color);
+    outline: none;
+    border: none;
+  }
+  
+}
+
+/* Tablet View Styles */
+@media (max-width: 794px) {
+  .search-area, .tooltip-text {
+    display: none;
+  }
+  .profile-actions-area {
+    display: flex;
+    align-items: center;
+  }
+  .mobileSearch {
+    display: block;
+    width: 2.5rem;
+  }
+  .mobileInput {
+    position: absolute;
+    left: 0.2rem;
+    z-index: 1000;
+    width: 60%;
+
+    display: flex;
+    align-items: center;
+    background: var(--mobile-bg-color);
+    border-radius: 5px;
+  }
+  .mobileInput .material-symbols-outlined {
+    background-color: var(--mobile-bg-color);
+  }
+  .mobileInput input {
+    background-color: var(--mobile-bg-color);
+    outline: none;
+    border: none;
+  }
+}
+
+@media (max-width: 1024px) {
+
 }

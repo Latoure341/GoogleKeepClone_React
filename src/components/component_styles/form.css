@@ -89,3 +89,22 @@
   color: grey;
   font-size: 1.1rem;
 }
+
+/* Media queries */
+/* Laptop Style View */
+@media (max-width: 1024px) {
+  
+}
+/* Tablet Style View */
+@media (max-width: 794px) {
+
+}
+
+/* Mobile Style View */
+@media (max-width: 599px) {
+
+    .form-container {
+        width: 83%;
+        margin: 1rem auto auto 5.3rem;
+    }
+}

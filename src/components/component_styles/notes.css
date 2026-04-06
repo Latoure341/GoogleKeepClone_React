@@ -1,12 +1,13 @@
 :root {
-    --bg-color: #fff;
-    --text-color: rgb(30,31,33);
+  --bg-color: #fff;
+  --text-color: rgb(30, 31, 33);
 }
-@media (prefers-color-scheme: dark){
-    :root {
-        --bg-color: rgb(32,33,36);
-        --text-color: rgb(220,221,223);
-    }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: rgb(32, 33, 36);
+    --text-color: rgb(255, 255, 255);
+  }
 }
 
 .notes {
@@ -40,8 +41,9 @@
 
 .note .title {
   color: var(--text-color);
+  font-weight: bold;
   width: 100%;
-  margin: 0.9375rem 0 0 0.9375rem ;
+  margin: 0.9375rem 0 0 0.9375rem;
 }
 
 .note .text {
@@ -67,4 +69,51 @@
   position: absolute;
   top: -1.25rem;
   left: -1.25rem;
+}
+
+/* Laptop Style View */
+@media (max-width: 1024px) {
+  .notes {
+    width: 70%;
+    margin: 0 10rem;
+  }
+}
+
+/* Tablet Style View */
+@media (max-width: 794px) {
+  .notes {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem 2rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+
+  }
+
+  .note {
+    width: 30%;
+    max-width: 50%;
+  }
+}
+
+/* Mobile Style View */
+@media (max-width: 599px) {
+
+  /* .notes-masonry {
+    display: flex;
+    flex-direction: column;
+  } */
+  .notes {
+    width: 88%;
+    margin: 0.5rem 0 auto 4.6rem;
+  }
+
+  .note {
+    width: 100%;
+    max-width: 100%;
+
+  }
 }

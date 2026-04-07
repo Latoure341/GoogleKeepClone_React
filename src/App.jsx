@@ -54,12 +54,13 @@ function App() {
     <>
       <NavBar setIsMiniSidebar={setIsMiniSidebar} />
       <SideBar isMiniSidebar={isMiniSidebar} />
-      <Form addNote={addNote} />
+      <Form addNote={addNote}  isMiniSidebar={isMiniSidebar}/>
       <Notes
         notes={notes}
         deleteNote={deleteNote}
         toggleModal={toggleModal}
         setSelectedNote={setSelectedNote}
+        isMiniSidebar={isMiniSidebar}
       />
       {isModalOpen && (
         <Modal

@@ -15,6 +15,7 @@
   max-width: 100%;
   box-sizing: border-box;
   padding: 0 1rem 2rem;
+  margin: auto 5rem;
 }
 
 .notes-masonry {
@@ -31,7 +32,7 @@
 .note {
   background-color: var(--bg-color);
   margin: 0.625rem 0;
-  width: 100%;
+  width: 20%;
   max-width: 100%;
   box-sizing: border-box;
   border: 0.7px solid #929292;
@@ -76,7 +77,12 @@
   .notes {
     width: 70%;
     margin: 0 10rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
   }
+  
 }
 
 /* Tablet Style View */

@@ -4,7 +4,7 @@ import cuid from "cuid";
 import "./component_styles/form.css";
 
 const Form = (props) => {
-  const { edit, selectedNote, addNote, toggleModal, editNote } = props;
+  const { edit, selectedNote, addNote, toggleModal, editNote, isMiniSidebar } = props;
   const [title, setTitle] = useState((edit && selectedNote.title) || "");
   const [text, setText] = useState((edit && selectedNote.text) || "");
   const [isActiveForm, setActiveForm] = useState(edit);
@@ -45,7 +45,7 @@ const Form = (props) => {
   };
   return (
     <>
-      <div className="form-container active-form" onClick={handlerClickFrom}>
+      <div className="form-container active-form" onClick={handlerClickFrom} style={isMiniSidebar ? {} : { marginLeft: "450px", width: '65%' }} >
         <form
           onSubmit={handleSubmit}
           className={isActiveForm ? "form" : ""}

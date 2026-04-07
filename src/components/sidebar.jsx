@@ -17,9 +17,9 @@ function sidebar(props) {
   
   return (
     <>
-      <div className="sidebar" onMouseOver={handleMouserOver} onMouseOut={handleMouseOut}
+      <div className={`sidebar ${(miniSidebar && isMiniSidebar) ? "" : "sidebar-shadow"}`} onMouseOver={handleMouserOver} onMouseOut={handleMouseOut}
       style={(miniSidebar && isMiniSidebar) ? { width: '70px' } : { width: '250px' }} >
-        <div className={miniSidebar ? "sidebar-item active-bar" : 'sidebar-item active-bar sidebar-active-item'}>
+        <div className={(miniSidebar && isMiniSidebar) ? "sidebar-item active-bar" : 'sidebar-item active-bar sidebar-active-item'}>
           <span className="material-symbols-outlined active">lightbulb</span>
           <span className="sidebar-text">Notes</span>
         </div>

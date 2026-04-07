@@ -11,10 +11,10 @@ import EmptyNotesList from "./EmptyNotesList";
 // };
 
 function Notes(props) {
-  const { notes, deleteNote, toggleModal, setSelectedNote } = props;
+  const { notes, deleteNote, toggleModal, setSelectedNote, isMiniSidebar } = props;
 
   return (
-    <div className="notes">
+    <div className="notes" style={isMiniSidebar ? {} : { marginLeft: '250px' }}>
       {notes.length === 0 && <EmptyNotesList />}
       {notes.length !== 0 && (
         // <Masonry

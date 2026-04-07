@@ -15,11 +15,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
   border-bottom: 0.5px solid rgb(95,99,104);
   padding: 0.5rem;
   color: var(--text-color);
-  overflow: hidden;
 }
 
 .logo-area {
@@ -60,11 +58,16 @@ input:focus {
   background-color: rgb(60,62,64);
   color: var(--text-color);
 }
+.tooltip-text{
+  position: absolute;
+  z-index: 1000;
+}
 
 /* Mobile View Styles */
 .mobileSearch {
   display: none;
 }
+
 @media (max-width: 599px) {
   .search-area, .tooltip-text, .profile-actions-area div:nth-child(3) {
     display: none;
@@ -136,7 +139,11 @@ input:focus {
 /* Laptop Style View */
 @media (max-width: 1024px) {
   .search-area {
-    width: 55%;
+    width: 40%;
+  }
+  .tooltip-text {
+    position: absolute;
+    z-index: 1000;
   }
 
 }

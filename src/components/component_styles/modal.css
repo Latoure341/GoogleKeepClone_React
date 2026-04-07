@@ -10,10 +10,10 @@
 }
 
 .modal .modal-content {
-  width: 36.8125rem;
+  width: 100%;
   position: relative;
   top: 30%;
-  left: 50%;
+  left: 43%;
   transform: translate(-50%, -50%);
 }
 

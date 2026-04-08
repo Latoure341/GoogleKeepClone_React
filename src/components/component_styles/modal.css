@@ -39,3 +39,16 @@
   }
   
 }
+
+@media ((min-width: 795px) and (max-width: 1024px)) {
+  .modal .modal-content {
+    left: 47%;
+  }
+  
+}
+@media ((min-width: 1024px) and (max-width: 1150px)) {
+  .modal .modal-content {
+    left: 50%;
+  }
+  
+}

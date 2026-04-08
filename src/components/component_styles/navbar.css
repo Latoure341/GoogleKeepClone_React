@@ -147,3 +147,12 @@ input:focus {
   }
 
 }
+
+@media ((min-width: 1025px) and (max-width: 1199px)) {
+   .search-area {
+    width: 40%;
+  }
+  .search-area {
+    width: 60%;
+  }
+}

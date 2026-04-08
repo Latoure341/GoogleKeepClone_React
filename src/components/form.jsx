@@ -45,7 +45,7 @@ const Form = (props) => {
   };
   return (
     <>
-      <div className="form-container active-form" onClick={handlerClickFrom} style={isMiniSidebar ? {} : { marginLeft: "450px", width: '65%' }} >
+      <div className="form-container active-form" onClick={handlerClickFrom} style={isMiniSidebar ? {} : { marginLeft: "250px", width: '55%' }} >
         <form
           onSubmit={handleSubmit}
           className={isActiveForm ? "form" : ""}

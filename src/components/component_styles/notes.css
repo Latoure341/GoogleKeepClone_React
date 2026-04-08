@@ -11,23 +11,13 @@
 }
 
 .notes {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 0 1rem 2rem;
-  margin: auto 5rem;
-}
-
-.notes-masonry {
   display: flex;
-  width: auto;
-  margin-left: -1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0.7rem;
 }
 
-.notes-masonry_column {
-  padding-left: 1.25rem;
-  background-clip: padding-box;
-}
 
 .note {
   background-color: var(--bg-color);
@@ -75,12 +65,17 @@
 /* Laptop Style View */
 @media (max-width: 1024px) {
   .notes {
-    width: 70%;
+    width: 60%;
     margin: 0 10rem;
 
     display: flex;
     flex-wrap: wrap;
     gap: 0.7rem;
+  }
+
+  .note {
+    width: 40%;
+    max-width: 60%;
   }
   
 }
@@ -92,7 +87,7 @@
     max-width: 100%;
     box-sizing: border-box;
     padding: 0 1rem 2rem;
-
+    margin: 1rem auto auto 1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.7rem;
@@ -100,8 +95,8 @@
   }
 
   .note {
-    width: 30%;
-    max-width: 50%;
+    width: 40%;
+    max-width: 60%;
   }
 }
 

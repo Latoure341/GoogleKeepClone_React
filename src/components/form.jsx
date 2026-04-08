@@ -44,6 +44,7 @@ const Form = (props) => {
   const handlerClickFrom = () => {
     setActiveForm(true);
   };
+
   return (
     <>
       <div className="form-container active-form" onClick={handlerClickFrom} style={isMiniSidebar ? {} : { marginLeft: "250px", width: '55%' }} >

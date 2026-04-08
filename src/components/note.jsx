@@ -10,11 +10,18 @@ const Note = (props) => {
 
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: note.id });
+    const noteColor = ()=>{
+    const r = Math.floor(Math.random() * 255)
+    const g = Math.floor(Math.random() * 255)
+    const b = Math.floor(Math.random() * 255)
+    return `rgb(${r}, ${g}, ${b})`
+  }
 
   const noteStyle = {
     transform: CSS.Transform.toString(transform),
     transition,
     opacity: isDragging ? 0.75 : 1,
+    backgroundColor: noteColor(),
   };
 
   const reminderText = useMemo(() => {
@@ -75,6 +82,7 @@ const Note = (props) => {
     updateReminder(note.id, null);
     setIsReminderPickerOpen(false);
   };
+
 
   return (
     <div

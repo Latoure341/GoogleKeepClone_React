@@ -36,7 +36,7 @@ function Notes(props) {
   };
 
   return (
-    <div className="notes" style={isMiniSidebar ? {} : { marginLeft: '250px' }}>
+    <div className="notes" style={ isMiniSidebar ? {} : { marginLeft: '250px' }}>
       {notes.length === 0 && <EmptyNotesList />}
       {notes.length !== 0 && (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

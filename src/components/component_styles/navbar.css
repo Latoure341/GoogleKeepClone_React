@@ -1,13 +1,17 @@
 :root {
-  --bg-color: #fff;
+  --bg-color: white;
   --text-color: #5f6368;
   --mobile-bg-color: rgb(40,42,44);
+  --hover-bg-color: rgb(231, 231, 231);
+  --search-bg-color: rgb(241, 241, 241);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: rgb(40,42,44);
     --text-color: rgb(150,151,153);
     --mobile-bg-color: white;
+    --hover-bg-color: rgb(60,62,64);
+    --search-bg-color: rgb(60,62,64);
   }
 }
 
@@ -29,7 +33,7 @@ nav {
 }
 
 .search-area {
-  background: var(--bg-color);
+  background: var(--search-bg-color) !important;
   width: 45.625rem;
   height: 3rem;
   border-radius: 8px;
@@ -55,7 +59,7 @@ input:focus {
 }
 
 .hover:hover {
-  background-color: rgb(60,62,64);
+  background-color: var(--hover-bg-color);
   color: var(--text-color);
 }
 .tooltip-text{
@@ -98,8 +102,7 @@ input:focus {
     background-color: var(--mobile-bg-color);
     outline: none;
     border: none;
-  }
-  
+  } 
 }
 
 /* Tablet View Styles */

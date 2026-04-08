@@ -1,7 +1,8 @@
-//import Masonry from "react-masonry-css";
 import "./component_styles/notes.css";
 import Note from "./note";
 import EmptyNotesList from "./EmptyNotesList";
+import { DndContext, PointerSensor, closestCenter, useSensor, useSensors } from "@dnd-kit/core";
+import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 
 // const breakpointColumnsObj = {
 //   default: 4,
@@ -11,27 +12,47 @@ import EmptyNotesList from "./EmptyNotesList";
 // };
 
 function Notes(props) {
-  const { notes, deleteNote, toggleModal, setSelectedNote, isMiniSidebar } = props;
+  const {
+    notes,
+    deleteNote,
+    toggleModal,
+    setSelectedNote,
+    isMiniSidebar,
+    updateReminder,
+    reorderNotes,
+  } = props;
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  );
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    reorderNotes(active.id, over?.id);
+  };
 
   return (
     <div className="notes" style={isMiniSidebar ? {} : { marginLeft: '250px' }}>
       {notes.length === 0 && <EmptyNotesList />}
       {notes.length !== 0 && (
-        // <Masonry
-        //   breakpointCols={breakpointColumnsObj}
-        //   className="notes-masonry"
-        //   columnClassName="notes-masonry_column"
-        // >
-          notes.map((note) => (
+        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+          <SortableContext items={notes.map((note) => note.id)} strategy={rectSortingStrategy}>
+            {notes.map((note) => (
             <Note
               key={note.id}
               note={note}
               deleteNote={deleteNote}
               toggleModal={toggleModal}
               setSelectedNote={setSelectedNote}
+              updateReminder={updateReminder}
             />
-          ))
-        // </Masonry>
+            ))}
+          </SortableContext>
+        </DndContext>
       )}
     </div>
   );

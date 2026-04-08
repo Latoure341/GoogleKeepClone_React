@@ -26,6 +26,7 @@ const Form = (props) => {
         id: cuid(),
         title,
         text,
+        reminder: null,
       };
       text !== "" ? addNote(note) : console.log("Enter the text and title");
     } else {

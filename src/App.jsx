@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import NavBar from "./components/navbar";
 import SideBar from "./components/sidebar";
@@ -6,14 +6,20 @@ import Form from "./components/form";
 import Notes from "./components/notes";
 import Modal from "./components/modal";
 
-//Array of notes
-const NOTES = [];
+const STORAGE_KEY = "keep_clone_notes";
 
 function App() {
-  let [notes, setNotes] = useState(NOTES);
+  let [notes, setNotes] = useState(() => {
+    const storedNotes = localStorage.getItem(STORAGE_KEY);
+    return storedNotes ? JSON.parse(storedNotes) : [];
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
   const [isMiniSidebar, setIsMiniSidebar] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+  }, [notes]);
 
   //Adding a note
   const addNote = (note) => {
@@ -43,6 +49,37 @@ function App() {
     });
   };
 
+  // Update reminder date/time for a note
+  const updateReminder = (id, reminder) => {
+    setNotes((prevState) =>
+      prevState.map((note) =>
+        note.id === id
+          ? {
+              ...note,
+              reminder,
+            }
+          : note
+      )
+    );
+  };
+
+  // Reorder notes and persist the new order
+  const reorderNotes = (activeId, overId) => {
+    if (!overId || activeId === overId) return;
+
+    setNotes((prevNotes) => {
+      const oldIndex = prevNotes.findIndex((note) => note.id === activeId);
+      const newIndex = prevNotes.findIndex((note) => note.id === overId);
+
+      if (oldIndex < 0 || newIndex < 0) return prevNotes;
+
+      const newNotes = [...prevNotes];
+      const [movedNote] = newNotes.splice(oldIndex, 1);
+      newNotes.splice(newIndex, 0, movedNote);
+      return newNotes;
+    });
+  };
+
   //open/close the modal
   const toggleModal = () => {
     setIsModalOpen((prevState) => {
@@ -61,6 +98,8 @@ function App() {
         toggleModal={toggleModal}
         setSelectedNote={setSelectedNote}
         isMiniSidebar={isMiniSidebar}
+        updateReminder={updateReminder}
+        reorderNotes={reorderNotes}
       />
       {isModalOpen && (
         <Modal

@@ -43,11 +43,64 @@
   margin: 0.625rem 0 0 0.9375rem;
 }
 
+.note-reminder {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.8rem 0 0 0.9375rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid #c8c8c8;
+  color: var(--text-color);
+  font-size: 0.78rem;
+}
+
+.note-reminder .material-symbols-outlined {
+  font-size: 0.85rem;
+}
+
+.note-reminder-past {
+  border-color: #ffca28;
+  background-color: rgba(255, 202, 40, 0.16);
+}
+
 .note .note-footer {
   margin-top: 0.9375rem;
   display: flex;
   padding: 0;
   justify-content: center;
+}
+
+.reminder-picker {
+  margin: 0.7rem 0.9375rem 0.8rem;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.reminder-picker input {
+  width: 100%;
+  border: 1px solid #c8c8c8;
+  border-radius: 6px;
+  padding: 0.3rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.reminder-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.reminder-actions button {
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-color);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
 }
 
 .note-footer .material-symbols-outlined {

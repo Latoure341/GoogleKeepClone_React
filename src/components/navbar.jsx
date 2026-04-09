@@ -36,14 +36,14 @@ const navbar = (props) => {
           />
           <span className="logo-text">Keep</span>
         </div>
-        <div className="search-area" style={{ backgroundColor: isFocused ? 'white' : 'rgb(40,42,44)' }}>
-          <div className="tooltip" >
+        <div className="search-area" style={{ backgroundColor: isFocused ? 'var(--search-bg-color)' : 'var(--bg-color)' }}>
+          <div className="tooltip">
             <span className="material-symbols-outlined hover" style={{color: isFocused && 'grey'}}>search</span>
             <span className="tooltip-text">Search</span>
           </div>
           <input type="text" placeholder="Search" 
           onFocus={() => {setIsFocused(true)}} 
-          style={{ backgroundColor: isFocused ? 'white' : 'transparent', color: isFocused && 'black' }} 
+          style={{ backgroundColor: isFocused ? 'var(--search-bg-color)' : 'var(--bg-color)', color: isFocused && 'black' }} 
           onBlur={() => setIsFocused(false)}/>
         </div>
         <div className="profile-actions-area">

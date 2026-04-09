@@ -1,26 +1,36 @@
-import React, { useState } from 'react';
-import './component_styles/modal.css'
+import React, { useRef } from 'react';
+import './component_styles/modal.css';
 import Form from './form';
 
-function modal(props) {
-  const [hasCursor, setCursor] = useState(false)
-  const { isModalOpen, selectedNote, toggleModal, editNote} = props
-  
-  const handleClick = ()=>{
-    !hasCursor && toggleModal();
-  }
-  const mouseOverHandle = ()=>setCursor(true);
-  const mouseOutHandle = ()=>setCursor(false);
+function Modal(props) {
+  const { isModalOpen, selectedNote, toggleModal, editNote } = props;
+  const formRef = useRef(null);
+
+  const handleClick = (event) => {
+    if (event.target === event.currentTarget) {
+      if (formRef.current?.save) {
+        formRef.current.save();
+      } else {
+        toggleModal();
+      }
+    }
+  };
 
   return (
     <>
-      <div className={`modal ${isModalOpen ? "open-modal" : ""}`} onClick={handleClick}>
-        <div className="modal-content" onMouseOver={mouseOverHandle} onMouseOut={mouseOutHandle}>
-            <Form edit={true} selectedNote={selectedNote} toggleModal={toggleModal} editNote={editNote}/>
+      <div className={`modal ${isModalOpen ? 'open-modal' : ''}`} onClick={handleClick}>
+        <div className="modal-content">
+          <Form
+            ref={formRef}
+            edit={true}
+            selectedNote={selectedNote}
+            toggleModal={toggleModal}
+            editNote={editNote}
+          />
         </div>
       </div>
     </>
   );
 }
 
-export default modal;
+export default Modal;

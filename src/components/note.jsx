@@ -11,9 +11,9 @@ const Note = (props) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: note.id });
     const noteColor = ()=>{
-    const r = Math.floor(Math.random() * 255)
-    const g = Math.floor(Math.random() * 255)
-    const b = Math.floor(Math.random() * 255)
+    const r = Math.floor(Math.random() * 100)
+    const g = Math.floor(Math.random() * 100)
+    const b = Math.floor(Math.random() * 100)
     return `rgb(${r}, ${g}, ${b})`
   }
 

@@ -35,8 +35,15 @@ function Notes(props) {
     reorderNotes(active.id, over?.id);
   };
 
+  const screenSize = ()=>{
+    if((window.innerWidth<1025) && (window.innerWidth>680) && !isMiniSidebar){
+      return { marginLeft: '250px', width: '55%' }
+    }
+    
+  }
+
   return (
-    <div className="notes" style={ isMiniSidebar ? {} : { marginLeft: '250px' }}>
+    <div className="notes" style={screenSize()}>
       {notes.length === 0 && <EmptyNotesList />}
       {notes.length !== 0 && (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

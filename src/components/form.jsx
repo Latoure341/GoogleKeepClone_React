@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useImperativeHandle, forwardRef } from "react";
 import cuid from "cuid";
-
 import "./component_styles/form.css";
 
-const Form = (props) => {
+const Form = forwardRef((props, ref) => {
   const { edit, selectedNote, addNote, toggleModal, editNote, isMiniSidebar } = props;
   const [title, setTitle] = useState((edit && selectedNote.title) || "");
   const [text, setText] = useState((edit && selectedNote.text) || "");
@@ -15,28 +14,40 @@ const Form = (props) => {
     setActiveForm(true);
   };
 
+  const saveEdit = useCallback(() => {
+    if (!edit) return;
+
+    editNote({
+      id: selectedNote.id,
+      title,
+      text,
+    });
+    toggleModal();
+    setTitle("");
+    setText("");
+  }, [edit, selectedNote, title, text, editNote, toggleModal]);
+
+  useImperativeHandle(ref, () => ({
+    save: saveEdit,
+  }), [saveEdit]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!edit) {
       setActiveForm(false);
 
-      //Create a note
       const note = {
         id: cuid(),
         title,
         text,
         reminder: null,
       };
-      text !== "" ? addNote(note) : console.log("Enter the text and title");
+      text !== "" && addNote(note);
     } else {
-      editNote({
-        id: selectedNote.id,
-        title, 
-        text
-      })
-      toggleModal()
-    };
+      saveEdit();
+    }
+
     setTitle("");
     setText("");
   };
@@ -44,10 +55,16 @@ const Form = (props) => {
   const handlerClickFrom = () => {
     setActiveForm(true);
   };
+  const screenSize = ()=>{
+    if((window.innerWidth<1025) && (window.innerWidth>680) && !isMiniSidebar){
+      return { marginLeft: '250px', width: '55%' }
+    }
+    
+  }
 
   return (
     <>
-      <div className="form-container active-form" onClick={handlerClickFrom} style={isMiniSidebar ? {} : { marginLeft: "250px", width: '55%' }} >
+      <div className="form-container active-form" onClick={handlerClickFrom} style={screenSize()} >
         <form
           onSubmit={handleSubmit}
           className={isActiveForm ? "form" : ""}
@@ -147,6 +164,6 @@ const Form = (props) => {
       </div>
     </>
   );
-};
+});
 
 export default Form;

@@ -1,9 +1,10 @@
 :root {
-  --bg-color: white;
+  --bg-color: rgb(240, 240, 240);
   --text-color: #5f6368;
   --mobile-bg-color: rgb(40,42,44);
   --hover-bg-color: rgb(231, 231, 231);
-  --search-bg-color: rgb(241, 241, 241);
+  --search-bg-color: rgb(230, 230, 230);
+  --border-color: rgb(230, 230, 230);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -11,7 +12,8 @@
     --text-color: rgb(150,151,153);
     --mobile-bg-color: white;
     --hover-bg-color: rgb(60,62,64);
-    --search-bg-color: rgb(60,62,64);
+    --border-color: rgb(42, 44, 48);
+    --search-bg-color: white;
   }
 }
 
@@ -33,14 +35,13 @@ nav {
 }
 
 .search-area {
-  background: var(--search-bg-color) !important;
   width: 45.625rem;
   height: 3rem;
   border-radius: 8px;
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
 }
-
 .search-area input {
   border: none;
   background: var(--bg-color);

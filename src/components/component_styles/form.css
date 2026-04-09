@@ -12,7 +12,7 @@
 .form-container {
     background: var(--bg-color);
     max-width: 37.375rem;
-    margin: 2rem auto;
+    margin: 3% auto 2% 26%;
     border: 0.5px solid #999999;
     box-shadow: 0 3px 5px 0 rgba(10,14,17,0.302), 0 4px 8px 5px rgba(10,14,17,0.149);
     border-radius: 8px;
